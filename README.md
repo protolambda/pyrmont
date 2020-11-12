@@ -149,7 +149,6 @@ Use the `pyrmont` network option.
 ```
   --network=pyrmont
 ```
-]
 
 #### Validator
 
