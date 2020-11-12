@@ -12,10 +12,7 @@ This testnet is:
 - Similar to mainnet as can be w.r.t. configuration
 - Public, users can try staking setup ahead of mainnet launch
 
-WARNING:
-- This testnet uses mainnet fork version (see reasons below)
-- DO NOT REUSE THE SAME KEYS OF A TESTNET ON MAINNET
-
+**NOTE: Deposit contract is being re-deployed with new fork version for deposits**
 
 ## Config
 
@@ -25,27 +22,14 @@ Bootnodes in [`bootnodes.txt`](./bootnodes.txt)
 
 Differences with regular mainnet config:
 ```yaml
-DEPOSIT_CONTRACT_ADDRESS: 0x2c539a95d2a3f9b10681D9c0dD7cCE37D40c7B79
-
-deposit_contract_deploy_block_nr: 3713500
-deposit_contract_deploy_tx: "0xf98900cca43d5a1ca8e74c8ad24b53a1f8a26d89f51980964a632eb45f219171"
 
 # Ethereum Goerli testnet
 DEPOSIT_CHAIN_ID: 5
 DEPOSIT_NETWORK_ID: 5
 
 MIN_GENESIS_TIME: 1605700800  #  Wednesday, November 18, 2020 12:00:00 PM UTC
+GENESIS_FORK_VERSION: TODO
 ```
-
-**Note that it uses mainnet fork version**: `GENESIS_FORK_VERSION: 0x00000000`
-The testnet is not meant to run long-term, and mainnet fork version was chosen because:
-- Any deposits made with Pyrmont config, if bypassing safety measures, will at least have a valid mainnet signature. Funds will not get lost if keys are kept.
-- Launchpad / deposit CLI explicitly checks against network differences, see https://github.com/ethereum/eth2.0-deposit-cli/pull/157 
-- The genesis validators root is mixed with the fork version, for a unique fork digest, used for everything but deposits and bootnodes. This avoids most issues.
-  - You cannot get slashed by reusing keys. Not recommended though, use different keys!
-- The network is not meant to run alongside mainnet, but rather just as preparation by being as similar as possible
-
-[`0x2c539a95d2a3f9b10681D9c0dD7cCE37D40c7B79` on etherscan](https://goerli.etherscan.io/address/0x2c539a95d2a3f9b10681D9c0dD7cCE37D40c7B79)
 
 Misc. data:
 ```yaml
