@@ -34,7 +34,7 @@ deposit_contract_deploy_tx: "0xf98900cca43d5a1ca8e74c8ad24b53a1f8a26d89f51980964
 DEPOSIT_CHAIN_ID: 5
 DEPOSIT_NETWORK_ID: 5
 
-MIN_GENESIS_TIME: 1605009600  #  Wednesday, November 18, 2020 12:00:00 PM UTC
+MIN_GENESIS_TIME: 1605700800  #  Wednesday, November 18, 2020 12:00:00 PM UTC
 ```
 
 **Note that it uses mainnet fork version**: `GENESIS_FORK_VERSION: 0x00000000`
