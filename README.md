@@ -7,12 +7,10 @@ A temporary testnet to run v1.0.0 clients as close as possible to mainnet settin
 **Eth2stats: https://pyrmont.eth2.wtf/**
 
 This testnet is:
-- Short lived, 1 - 2 weeks. Not alongside mainnet.
+- Running for a few weeks, likely until mainnet launch.
 - Larger than the average testnet, 100.000+ validators, all live.
-- Similar to mainnet as can be w.r.t. configuration
+- Similar to mainnet w.r.t. configuration
 - Public, users can try staking setup ahead of mainnet launch
-
-**NOTE: Deposit contract is being re-deployed with new fork version for deposits**
 
 ## Config
 
@@ -22,19 +20,27 @@ Bootnodes in [`bootnodes.txt`](./bootnodes.txt)
 
 Differences with regular mainnet config:
 ```yaml
+# Pyrmont test deposit contract on Goerli (2nd edition, 0x00002009 fork version)
+DEPOSIT_CONTRACT_ADDRESS: 0x8c5fecdC472E27Bc447696F431E425D02dd46a8c
 
 # Ethereum Goerli testnet
 DEPOSIT_CHAIN_ID: 5
 DEPOSIT_NETWORK_ID: 5
 
 MIN_GENESIS_TIME: 1605700800  #  Wednesday, November 18, 2020 12:00:00 PM UTC
-GENESIS_FORK_VERSION: TODO
+GENESIS_DELAY: 432000  # 5 days
+GENESIS_FORK_VERSION: 0x00002009
 ```
+
+Deposit contract on etherscan: [`0x8c5fecdC472E27Bc447696F431E425D02dd46a8c`](https://goerli.etherscan.io/address/0x8c5fecdc472e27bc447696f431e425d02dd46a8c)
 
 Misc. data:
 ```yaml
+deposit_contract_deploy_block_nr: 3743587
+deposit_contract_deploy_tx: 0x34a084b9109c120b8dc26efc44a04dc0edda4c8361ab4dc8184b562fe1ea947e
+
 # Fork digest, mixed with zeroed genesis validators root: 
-bootnode_fork_digest: TODO
+bootnode_fork_digest: 0xd54cf597
 # curl localhost:4000/eth/v1/beacon/genesis
 # The genesis time, after waiting for a good eth1 candidate block etc.
 actual_genesis_time: TODO
@@ -142,4 +148,27 @@ Prepare a binary with insecure/experimental features enabled:
 ```shell script
 make -j8 LOG_LEVEL="TRACE" NIMFLAGS="-d:insecure" validator_client
 ```
+
+## F.A.Q.
+
+### What is "Pyrmont"?
+
+Pyrmont is an area in Sydney, a favorite of Sigma Prime (Lighthouse) devs, and location of EDCON 2019, which hosted one of the early Eth2 dev workshops.
+
+### Is Pyrmont a long running testnet?
+
+Not quite. It is planned to run until mainnet launch, and serves a purpose of testing v1.0.0 with mainnet settings, on a large network.
+It can then continue, or it may be replaced for a testnet with better UX: long term it is better for users to not have to wait as long in a deposit queue,
+ and get removed quicker if offline (most users only try a testnet for a day or two at a time).
+
+### Why the `0x00002009` fork version.
+
+This refers to the 2009 area code of Pyrmont.
+
+### Why is the deposit contract different?
+
+To bootstrap the Pyrmont network, a 100.000 deposits were made, to create validators for the client devs and other parties involved in running the network.
+To avoid burning 3.2 million Goerli ETH again (it was done previously, ineffectively), the contract was modified to make the first 100.000 deposits free of charge, for the creator only.
+Now that the 100.000 deposits are in, the contract functions the same, and burns Goerli ETH.
+The source can is verified on etherscan for your convenience, see [here](https://goerli.etherscan.io/address/0x8c5fecdc472e27bc447696f431e425d02dd46a8c#code)
 
