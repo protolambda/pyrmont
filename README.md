@@ -8,7 +8,7 @@ A temporary testnet to run v1.0.0 clients as close as possible to mainnet settin
 
 This testnet is:
 - Running for a few weeks, likely until mainnet launch.
-- Larger than the average testnet, 100.000+ validators, all live.
+- Larger than the average testnet, 100,000+ validators, all live.
 - Similar to mainnet w.r.t. configuration
 - Public, users can try staking setup ahead of mainnet launch
 
@@ -167,8 +167,8 @@ This refers to the 2009 area code of Pyrmont.
 
 ### Why is the deposit contract different?
 
-To bootstrap the Pyrmont network, a 100.000 deposits were made, to create validators for the client devs and other parties involved in running the network.
-To avoid burning 3.2 million Goerli ETH again (it was done previously, ineffectively), the contract was modified to make the first 100.000 deposits free of charge, for the creator only.
-Now that the 100.000 deposits are in, the contract functions the same, and burns Goerli ETH.
+To bootstrap the Pyrmont network, a 100,000 deposits were made, to create validators for the client devs and other parties involved in running the network.
+To avoid burning 3.2 million Goerli ETH again (it was done previously, ineffectively), the contract was modified to make the first 100,000 deposits free of charge, for the creator only.
+Now that the 100,000 deposits are in, the contract functions the same, and burns Goerli ETH.
 The source can is verified on etherscan for your convenience, see [here](https://goerli.etherscan.io/address/0x8c5fecdc472e27bc447696f431e425d02dd46a8c#code)
 
