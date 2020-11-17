@@ -43,12 +43,12 @@ deposit_contract_deploy_tx: 0x34a084b9109c120b8dc26efc44a04dc0edda4c8361ab4dc818
 bootnode_fork_digest: 0xd54cf597
 # curl localhost:4000/eth/v1/beacon/genesis
 # The genesis time, after waiting for a good eth1 candidate block etc.
-actual_genesis_time: TODO
-genesis_validators_root: TODO
+actual_genesis_time: 1605700807  # (Wednesday, November 18, 2020 12:00:07 PM)
+genesis_validators_root: 0x9436e8a630e3162b7ed4f449b12b8a5a368a4b95bc46b941ae65c11613bfa4c1
 # curl localhost:4000/eth/v1/beacon/states/genesis/root
-genesis_state_root: TODO
+genesis_state_root: 0x2bb257ca66d05a047a65fe43a5f457b674de445d917cca029efb09b3ba4758c4
 # curl localhost:4000/eth/v1/beacon/blocks/genesis/root
-genesis_block_root: TODO
+genesis_block_root: 0x6a89af5df908893eedbed10ba4c13fc13d5653ce57db637e3bfded73a987bb87
 ```
 
 ## Eth2stats
